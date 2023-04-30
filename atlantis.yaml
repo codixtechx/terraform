@@ -11,6 +11,9 @@ projects:
   workflow: production
 
 ######
+repos:
+  - id: /.*/
+    allowed_overrides: [workflow]
 workflows:
   staging:
     plan:
