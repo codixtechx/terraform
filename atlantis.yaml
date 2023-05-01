@@ -12,6 +12,7 @@ projects:
     workspace: production
     autoplan:
       enabled: true
+      
 # - dir: ./staging
 #   workflow: staging # could also be custom2 OR default
 # - dir: ./production
