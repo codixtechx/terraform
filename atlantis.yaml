@@ -1,38 +1,38 @@
 version: 3
 projects:
-# - dir: .
-#   workflow: staging # could also be custom2 OR default
+- dir: .
+  workflow: production # could also be custom2 OR default
 
-workflows:
-  staging:
-    plan:
-      steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "staging.tfvars"]
-    # NOTE: no need to define the apply stage because it will default
-    # to the normal apply stage.
+# workflows:
+#   staging:
+#     plan:
+#       steps:
+#       - init
+#       - plan:
+#           extra_args: ["-var-file", "staging.tfvars"]
+#     # NOTE: no need to define the apply stage because it will default
+#     # to the normal apply stage.
     
-  production:
-    plan:
-      steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "production.tfvars"]
-    apply:
-      steps:
-        - apply:
-            extra_args: ["-var-file", "production.tfvars"]
-    import:
-      steps:
-        - init
-        - import:
-            extra_args: ["-var-file", "production.tfvars"]
-    state_rm:
-      steps:
-        - init
-        - state_rm:
-            extra_args: ["-lock=false"]
+#   production:
+#     plan:
+#       steps:
+#       - init
+#       - plan:
+#           extra_args: ["-var-file", "production.tfvars"]
+#     apply:
+#       steps:
+#         - apply:
+#             extra_args: ["-var-file", "production.tfvars"]
+#     import:
+#       steps:
+#         - init
+#         - import:
+#             extra_args: ["-var-file", "production.tfvars"]
+#     state_rm:
+#       steps:
+#         - init
+#         - state_rm:
+#             extra_args: ["-lock=false"]
 # atlantis.yaml
 # version: 3
 # projects:
