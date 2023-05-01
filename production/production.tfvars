@@ -1,1 +1,1 @@
-ecr_repo="test-atlantis-resource_repos"
+ecr_repo="production-atlantis-resource-repos"
