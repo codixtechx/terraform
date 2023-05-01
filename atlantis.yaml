@@ -1,9 +1,16 @@
 version: 3
 projects:
-- dir: ./staging
-  workflow: staging # could also be custom2 OR default
-- dir: ./production
-  workflow: production # could also be custom2 OR default
+  - name: staging
+    workflow: staging
+    dir: ./staging
+    workspace: staging
+    autplan:
+      enabled: true
+      
+# - dir: ./staging
+#   workflow: staging # could also be custom2 OR default
+# - dir: ./production
+#   workflow: production # could also be custom2 OR default
 
 
 # workflows:
