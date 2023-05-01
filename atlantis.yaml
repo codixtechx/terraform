@@ -1,7 +1,7 @@
-# version: 3
-# projects:
-# - dir: .
-#   workflow: custom1 # could also be custom2 OR default
+version: 3
+projects:
+- dir: .
+  # workflow: custom1 # could also be custom2 OR default
 # atlantis.yaml
 # version: 3
 # projects:
@@ -20,33 +20,33 @@
 # repos:
 #   - id: /.*/
 #     allowed_overrides: [workflow]
-workflows:
-  staging:
-    plan:
-      steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "staging.tfvars"]
-    # NOTE: no need to define the apply stage because it will default
-    # to the normal apply stage.
-    
-  production:
-    plan:
-      steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "production.tfvars"]
-    apply:
-      steps:
-        - apply:
-            extra_args: ["-var-file", "production.tfvars"]
-    import:
-      steps:
+  workflows:
+    staging:
+      plan:
+        steps:
         - init
-        - import:
-            extra_args: ["-var-file", "production.tfvars"]
-    state_rm:
-      steps:
+        - plan:
+            extra_args: ["-var-file", "staging.tfvars"]
+      # NOTE: no need to define the apply stage because it will default
+      # to the normal apply stage.
+      
+    production:
+      plan:
+        steps:
         - init
-        - state_rm:
-            extra_args: ["-lock=false"]
+        - plan:
+            extra_args: ["-var-file", "production.tfvars"]
+      apply:
+        steps:
+          - apply:
+              extra_args: ["-var-file", "production.tfvars"]
+      import:
+        steps:
+          - init
+          - import:
+              extra_args: ["-var-file", "production.tfvars"]
+      state_rm:
+        steps:
+          - init
+          - state_rm:
+              extra_args: ["-lock=false"]
