@@ -1,7 +1,7 @@
 version: 3
 projects:
 - dir: .
-  # workflow: workflow # could also be custom2 OR default
+  workflow: staging # could also be custom2 OR default
 # atlantis.yaml
 # version: 3
 # projects:
