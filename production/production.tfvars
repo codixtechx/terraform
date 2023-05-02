@@ -1,0 +1,1 @@
+ecr_repo="production-atlantis-resource-repos"
